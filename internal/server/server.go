@@ -1,4 +1,4 @@
-package sport_point_backend
+package server
 
 import (
 	"context"
