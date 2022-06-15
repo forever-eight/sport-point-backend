@@ -1,4 +1,4 @@
-CREATE TYPE curr AS ENUM ('EUR', 'TRY', 'RUB');
+--CREATE TYPE curr AS ENUM ('EUR', 'TRY', 'RUB');
 
 CREATE TABLE IF NOT EXISTS studio
 (
@@ -43,14 +43,15 @@ VALUES (1, 'hip hop', 2, 'dance classes', 1, 1200, 1260, 30, 'EUR'),
 
 CREATE TABLE IF NOT EXISTS users
 (
-    id    SERIAL NOT NULL PRIMARY KEY,
-    name  TEXT   NOT NULL,
-    email TEXT   NOT NULL
+    id       SERIAL NOT NULL PRIMARY KEY,
+    name     TEXT   NOT NULL,
+    email    TEXT   NOT NULL,
+    password TEXT   NOT NULL
 );
 
-INSERT INTO users (name, email)
-VALUES ('Maria T', '123@t.ru'),
-       ('Ivan I', '12345@gmail.com');
+INSERT INTO users (name, email, password)
+VALUES ('Maria T', '123@t.ru', '1234'),
+       ('Ivan I', '12345@gmail.com', '0987');
 
 CREATE TABLE IF NOT EXISTS transaction
 (
