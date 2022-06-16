@@ -8,6 +8,7 @@ import (
 
 type Authorization interface {
 	CreateUser(user *ds.User) (uint32, error)
+	GetUser(email, password string) (*ds.User, error)
 }
 
 // todo new interfaces

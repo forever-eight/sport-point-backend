@@ -8,8 +8,8 @@ import (
 	"github.com/forever-eight/sport-point-backend.git/internal/app/ds"
 )
 
-type createUserResponse struct {
-	Result *ds.UserOutput `json:"result,omitempty"`
+type signUpResponse struct {
+	*ds.UserOutput
 }
 
 func (h *Handler) signUp(c *gin.Context) {
@@ -23,9 +23,28 @@ func (h *Handler) signUp(c *gin.Context) {
 		newErrorResponse(c, http.StatusInternalServerError, err.Error())
 		return
 	}
-	c.JSON(http.StatusOK, createUserResponse{Result: output})
+	c.JSON(http.StatusOK, signUpResponse{output})
+}
+
+type signInInput struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type signInResponse struct {
+	Token string
 }
 
 func (h *Handler) signIn(c *gin.Context) {
-
+	var input *signInInput
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+	token, err := h.Service.GenerateToken(input.Email, input.Password)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, signInResponse{Token: token})
 }
