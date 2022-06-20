@@ -28,7 +28,7 @@ func (r *Repository) GetUser(email, password string) (*ds.User, error) {
 			FROM users
 			WHERE email = $1 AND password = $2;
 	`
-	var user *ds.User
+	var user ds.User
 	err := r.db.Get(&user, query, email, password)
 	if err != nil {
 		return nil, fmt.Errorf("failed to select: %w", err)
@@ -37,5 +37,5 @@ func (r *Repository) GetUser(email, password string) (*ds.User, error) {
 		return nil, fmt.Errorf("not found in storage")
 	}
 
-	return user, nil
+	return &user, nil
 }

@@ -9,6 +9,7 @@ type Authorization interface {
 	CreateUser(user *ds.UserInput) (*ds.UserOutput, error)
 
 	GenerateToken(email, password string) (string, error)
+	ParseToken(token string) (int, error)
 }
 
 // todo new interfaces

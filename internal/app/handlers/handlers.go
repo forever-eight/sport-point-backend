@@ -27,14 +27,14 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		auth.POST("/sign-in", h.signIn)
 	}
 
-	/*api := router.Group("/api")
+	api := router.Group("/api", h.userIdentity)
 	{
 		// classes
 		classes := api.Group("/classes")
 		{
 			// create
-			classes.POST("/")
-			// get all
+			classes.POST("/", h.createClass)
+			/*// get all
 			classes.GET("/")
 			// get one
 			classes.GET("/:id")
@@ -48,16 +48,16 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			{
 				booking.POST("/:user-id")
 				booking.DELETE("/:id")
-			}
+			}*/
 
 		}
 		// points
-		points := api.Group("/points")
+		/*points := api.Group("/points")
 		{
 			points.POST("/:user-id")
 			points.GET("/:user-id")
-		}
-	}*/
+		}*/
+	}
 
 	return router
 }
