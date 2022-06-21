@@ -3,6 +3,7 @@ package handlers
 import (
 	"github.com/gin-gonic/gin"
 
+	"github.com/forever-eight/sport-point-backend.git/internal/app/mw"
 	"github.com/forever-eight/sport-point-backend.git/internal/app/service"
 )
 
@@ -27,7 +28,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		auth.POST("/sign-in", h.signIn)
 	}
 
-	api := router.Group("/api", h.userIdentity)
+	api := router.Group("/api", mw.UserIdentity())
 	{
 		// classes
 		classes := api.Group("/classes")
