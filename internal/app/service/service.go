@@ -14,6 +14,10 @@ type Authorization interface {
 
 // todo new interfaces
 
+type Classes interface {
+	CreateClass(class *ds.ClassInput) (*ds.ClassOutput, error)
+}
+
 type Service struct {
 	Authorization
 	repos *repository.Repository
