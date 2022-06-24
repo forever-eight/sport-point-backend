@@ -13,7 +13,12 @@ type Authorization interface {
 
 // todo new interfaces
 
+type Classes interface {
+	CreateClass(class *ds.Class) (uint32, error)
+}
+
 type Repository struct {
+	Classes
 	Authorization
 	db *sqlx.DB
 }

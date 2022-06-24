@@ -1,5 +1,3 @@
---CREATE TYPE curr AS ENUM ('EUR', 'TRY', 'RUB');
-
 CREATE TABLE IF NOT EXISTS studio
 (
     id    SERIAL NOT NULL PRIMARY KEY,
@@ -35,13 +33,12 @@ CREATE TABLE IF NOT EXISTS classes
     started_at  INT    NOT NULL,
     duration    INT    NOT NULL,
     amount      INT    NOT NULL,
-    currency    curr   NOT NULL DEFAULT 'EUR'
 );
 
-INSERT INTO classes (studio_id, title, type_id, description, weekday, started_at, duration, amount, currency)
-VALUES (1, 'hip hop', 2, 'dance classes', 1, 1200, 60, 30, 'EUR'),
-       (1, 'hip hop', 2, 'dance classes', 5, 1200, 120, 30, 'EUR'),
-       (2, 'cycle', 2, 'cardio', 7, 600, 50, 60, 'TRY');
+INSERT INTO classes (studio_id, title, type_id, description, weekday, started_at, duration, amount)
+VALUES (1, 'hip hop', 2, 'dance classes', 1, 1200, 60, 30),
+       (1, 'hip hop', 2, 'dance classes', 5, 1200, 120, 30),
+       (2, 'cycle', 2, 'cardio', 7, 600, 50, 60);
 
 CREATE TABLE IF NOT EXISTS users
 (
