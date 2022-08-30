@@ -24,7 +24,7 @@ func (i *ClassInput) Validate() error {
 		return fmt.Errorf("invalid title")
 	}
 	if i.Description == "" {
-		return fmt.Errorf("invalid title")
+		return fmt.Errorf("invalid description")
 	}
 	if i.TypeID <= 0 {
 		return fmt.Errorf("invalid type ID")

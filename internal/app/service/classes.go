@@ -20,5 +20,5 @@ func (s *Service) CreateClass(input *ds.ClassInput) (*ds.ClassOutput, error) {
 		return nil, fmt.Errorf("service err: CreateClass: %s", err)
 	}
 	//class.ToOutput(id)
-	return &ds.ClassOutput{ID: 1}, nil
+	return &ds.ClassOutput{ID: id}, nil
 }

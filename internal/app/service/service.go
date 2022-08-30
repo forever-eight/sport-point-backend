@@ -17,6 +17,10 @@ type Classes interface {
 	CreateClass(input *ds.ClassInput) (*ds.ClassOutput, error)
 }
 
+type Studios interface {
+	CreateStudio(input *ds.ClassInput) (*ds.ClassOutput, error)
+}
+
 type Service struct {
 	Authorization
 	repos *repository.Repository
